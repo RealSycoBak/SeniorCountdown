@@ -1,20 +1,7 @@
-var Hebrew = 0; //Initialcount
-var Science = 0;
-var History = 0;
-var Israel_Ed = 0;
-var Selah = 0;
-var English = 0;
-var Maths = 0;
-var Talmud = 0;
-var Chumash = 0;
-var Navi = 0;
-var SchoolDays = 0;
-
 var socket = io();
 
 socket.on("connect", () => {
   console.log("Connected to server");
-  socket.emit("sendCount", true);
 });
 
 socket.on("disconnect", () => {
@@ -23,17 +10,6 @@ socket.on("disconnect", () => {
 
 socket.on("sendCount", (data) => {
     console.log(data)
-    Hebrew = data.Hebrew;
-    Science = data.Science;
-    History = data.History;
-    Israel_Ed = data.Israel_Ed;
-    Selah = data.Selah;
-    English = data.English;
-    Maths = data.Maths;
-    Talmud = data.Talmud;
-    Chumash = data.Chumash;
-    Navi = data.Navi;
-    SchoolDays = data.SchoolDays;
     updateValue("hebrew", data.Hebrew)
     updateValue("science", data.Science)
     updateValue("history", data.History)
