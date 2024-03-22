@@ -20,11 +20,30 @@ var Chumash = 0;
 var Navi = 0;
 var SchoolDays = 0;
 
+function Initialcount(){
+  const data = readFileSync('count.json');
+  var dataparse = JSON.parse(data)
+  Hebrew = dataparse.Hebrew
+  Science = dataparse.Science
+  History = dataparse.History
+  Israel_Ed = dataparse.Israel_Ed
+  Selah = dataparse.Selah
+  English = dataparse.English
+  Maths =  dataparse.Maths
+  Talmud = dataparse.Talmud
+  Chumash = dataparse.Chumash
+  Navi = dataparse.Navi
+  SchoolDays = dataparse.SchoolDays
+}
+
+Initialcount();
+
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
+
 
 function sendData() {
   const data = readFileSync('count.json');
@@ -55,8 +74,6 @@ io.on("connection", (socket) => {
 });
 
 });
-
-  
 
 
 function updateValue(name, value) {
